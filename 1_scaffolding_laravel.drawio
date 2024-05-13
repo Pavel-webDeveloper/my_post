@@ -1,0 +1,64 @@
+<mxfile host="65bd71144e">
+    <diagram id="XEu2gbl-7uaOfNecbIsk" name="Page-1">
+        <mxGraphModel dx="2236" dy="569" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="3" value="&lt;h1&gt;&lt;font color=&quot;#ffff00&quot;&gt;SCAFFOLDING PROGETTO LARAVEL&lt;/font&gt;&lt;/h1&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#FFFF00;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="-260" width="460" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="&lt;span style=&quot;color: rgb(240, 240, 240); text-align: left;&quot;&gt;1. CREARE CARTELLA ED ENTRARCI DA TERMINALE&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFF00;fontColor=#FFFF00;" parent="1" vertex="1">
+                    <mxGeometry x="-160" y="150" width="290" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="&lt;span style=&quot;color: rgb(240, 240, 240); text-align: left; background-color: initial;&quot;&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;3.INSTALLARE COMPOSER REQUIRE DOCTRINE/DBAL:^2&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;SE DA ERRORE&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;&lt;span style=&quot;color: rgb(240, 240, 240); text-align: left;&quot;&gt;composer require doctrine/dbal:^2&lt;br&gt;&lt;/span&gt;&lt;br style=&quot;color: rgb(240, 240, 240); text-align: left;&quot;&gt;&lt;span style=&quot;color: rgb(240, 240, 240); text-align: left; background-color: initial;&quot;&gt;&lt;span style=&quot;&quot;&gt;&#9;&lt;/span&gt;1. scrivere nel composer.json &quot;doctrine/dbal&quot;: &quot;^2&quot;, a riga 12&lt;br&gt;&lt;span style=&quot;&quot;&gt;&#9;&lt;/span&gt;2. eliminare il composer.lock e la cartella vendor&lt;br&gt;&lt;span style=&quot;&quot;&gt;&#9;&lt;/span&gt;3. lanciare il composer install&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFF00;fontColor=#FFFF00;" parent="1" vertex="1">
+                    <mxGeometry x="-197.5" y="330" width="377.5" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="&lt;div style=&quot;color: rgb(240, 240, 240); text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;2.CREARE PROGETTO LARAVEL&lt;/span&gt;&lt;/div&gt;&lt;span style=&quot;color: rgb(240, 240, 240); text-align: left; background-color: initial;&quot;&gt;composer create-project --prefer-dist laravel/laravel:^7.0 .&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFF00;fontColor=#FFFF00;" parent="1" vertex="1">
+                    <mxGeometry x="-197.5" y="250" width="365" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="&lt;span style=&quot;color: rgb(240, 240, 240); text-align: left;&quot;&gt;4.INSTALLARE LARAVEL UI&lt;/span&gt;&lt;br style=&quot;color: rgb(240, 240, 240); text-align: left;&quot;&gt;&lt;span style=&quot;color: rgb(240, 240, 240); text-align: left;&quot;&gt;&lt;/span&gt;&lt;span style=&quot;color: rgb(240, 240, 240); text-align: left;&quot;&gt;&#9;&lt;/span&gt;&lt;span style=&quot;color: rgb(240, 240, 240); text-align: left;&quot;&gt;composer require laravel/ui:^2.4&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFF00;fontColor=#FFFF00;" parent="1" vertex="1">
+                    <mxGeometry x="-150" y="480" width="290" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="&lt;font color=&quot;#ffffff&quot;&gt;5. RIMUOVO I FAKER&lt;br&gt;composer require fzaninotto/faker&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFF00;fontColor=#FFFF00;" parent="1" vertex="1">
+                    <mxGeometry x="-125" y="585" width="250" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="&lt;font color=&quot;#ffffff&quot;&gt;6. AGGIUNGO NUOVO FAKER&lt;br&gt;composer require fakerphp/faker&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFF00;fontColor=#FFFF00;" parent="1" vertex="1">
+                    <mxGeometry x="-125" y="700" width="250" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="&lt;font color=&quot;#ffffff&quot;&gt;7. INSTALLARE LO SCAFFOLDING DEL AUTH CON VUE&lt;br&gt;php artisan ui vue --auth&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFF00;fontColor=#FFFF00;" parent="1" vertex="1">
+                    <mxGeometry x="-140" y="820" width="280" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="&lt;font color=&quot;#ffffff&quot;&gt;8. AGGIUNGERE PAGINE DI ERRORE PERSONALIZZATE&lt;br&gt;php artisan vendor:publish --tag=laravel-errors&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFF00;fontColor=#FFFF00;" parent="1" vertex="1">
+                    <mxGeometry x="-140" y="940" width="280" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="&lt;font color=&quot;#ffffff&quot;&gt;9. INSTALLARE TUTTE LE DIPENDENZE&amp;nbsp;&lt;br&gt;NODE_MODULES&lt;br&gt;npm install&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFF00;fontColor=#FFFF00;" parent="1" vertex="1">
+                    <mxGeometry x="-140" y="1060" width="280" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="&lt;font color=&quot;#ffffff&quot;&gt;10.&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#ffffff&quot;&gt;AGGIUNGERE AL GITIGNORE IL composer.lock, package-lock.json&lt;br&gt;&lt;/font&gt;&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFF00;fontColor=#FFFF00;" parent="1" vertex="1">
+                    <mxGeometry x="-140" y="1180" width="280" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#f0f0f0&quot;&gt;CREARE DATABASE SU MYSQL&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFF00;fontColor=#FFFF00;" parent="1" vertex="1">
+                    <mxGeometry x="-217.5" y="80" width="375" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#ffffff&quot;&gt;11. MODIFICARE FILE .env&lt;br&gt;e pulire la cash lanciando&lt;br&gt;&amp;nbsp;composer dump-autoload&lt;br&gt;&lt;/font&gt;oppure&lt;br&gt;&lt;font color=&quot;#ffffff&quot;&gt;php artisan config:clear&lt;/font&gt;&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFF00;fontColor=#FFFF00;" parent="1" vertex="1">
+                    <mxGeometry x="-140" y="1280" width="280" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#ffffff&quot;&gt;12. INSTALLAZIONE FONTAWESOME&lt;br&gt;npm install --save @fortawesome/fontawesome-free&lt;/font&gt;&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFF00;fontColor=#FFFF00;" parent="1" vertex="1">
+                    <mxGeometry x="-140" y="1420" width="310" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#ffffff&quot;&gt;13. IMPORTARE I FONT IN APP.CSS&lt;br&gt;&lt;/font&gt;&lt;div&gt;&lt;font color=&quot;#ffffff&quot;&gt;// fontawesome&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#ffffff&quot;&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;&#9;&#9;&lt;/span&gt;$fa-font-path: &quot;../fonts/font-awesome&quot; !default;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#ffffff&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#ffffff&quot;&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;&#9;&#9;&lt;/span&gt;@import '~@fortawesome/fontawesome-free/scss/fontawesome';&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#ffffff&quot;&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;&#9;&#9;&lt;/span&gt;@import '~@fortawesome/fontawesome-free/scss/regular';&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#ffffff&quot;&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;&#9;&#9;&lt;/span&gt;@import '~@fortawesome/fontawesome-free/scss/solid';&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#ffffff&quot;&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;&#9;&#9;&lt;/span&gt;@import '~@fortawesome/fontawesome-free/scss/brands';&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFF00;fontColor=#FFFF00;" parent="1" vertex="1">
+                    <mxGeometry x="-175.62" y="1550" width="385.62" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="&lt;font color=&quot;#ffffff&quot;&gt;14. MODIFICARE IL WEBPACK.MIX&lt;br&gt;&lt;div&gt;mix.js('resources/js/app.js', 'public/js')&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&quot;&quot;&gt;&#9;&#9;&#9;&#9;&lt;/span&gt;.sass('resources/sass/app.scss', 'public/css').options({&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;span style=&quot;&quot;&gt;&#9;&#9;&#9;&#9;&lt;/span&gt;processCssUrls: false,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&quot;&quot;&gt;&#9;&#9;&#9;&lt;/span&gt;});&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;&#9;&#9;&#9;&lt;/span&gt;mix.copyDirectory('./node_modules/@fortawesome/fontawesome-free/webfonts/*', &lt;span style=&quot;&quot;&gt;&#9;&#9;&#9;&lt;/span&gt;'public/fonts/font-awesome');&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFF00;fontColor=#FFFF00;" parent="1" vertex="1">
+                    <mxGeometry x="-175.62" y="1770" width="395.62" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="&lt;font color=&quot;#ffffff&quot;&gt;15.&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#ffffff&quot;&gt;CREARE CARTELLE LAYOUTS E VARI PARTIALS&lt;br&gt;&lt;/font&gt;&lt;div&gt;&lt;font color=&quot;#ffffff&quot;&gt;LINKARE IL CSS USANDO {{asset('css/app.css')}} nel layout principale che viene esteso&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;font color=&quot;#ffffff&quot;&gt;&amp;nbsp;INSERIRE 1 CLASSE DI BOOTSTRAP E 1 DI FONTAWESOME PER VEDERE SE STANNO FUNZIONANDO CORRETTAMENTE&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#ffffff&quot;&gt;&amp;nbsp;&amp;lt;h1 class=&quot;text-center&quot;&amp;gt;Ciao &amp;lt;i class=&quot;fa-brands fa-android&quot;&amp;gt;&amp;lt;/i&amp;gt;&amp;lt;/h1&amp;gt;&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFF00;fontColor=#FFFF00;" parent="1" vertex="1">
+                    <mxGeometry x="-175.62" y="1950" width="395.62" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="&lt;font color=&quot;#ffffff&quot;&gt;16. RINOMINARE LE CARTELLE IN ADMIN JS - CSS -LAYOUTS&lt;br&gt;Per la parte di amministrazione&lt;br&gt;Modificando i relativi collegamenti all'interno dei template e funzioni in cui vengono richiamati&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFF00;fontColor=#FFFF00;" parent="1" vertex="1">
+                    <mxGeometry x="-175.62" y="2120" width="395.62" height="140" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
