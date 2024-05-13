@@ -12,8 +12,8 @@ const mix = require('laravel-mix');
  */
 
 //  back-office
- mix.js('resources/js/app.js', 'public/js')
- .sass('resources/sass/app.scss', 'public/css').options({
+ mix.js('resources/js/admin.js', 'public/js')
+ .sass('resources/sass/admin.scss', 'public/css').options({
      processCssUrls: false,
  });
-mix.copyDirectory('./node_modules/@fortawesome/fontawesome-free/webfonts/*', 'public/fonts/font-awesome');
+
