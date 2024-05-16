@@ -27,6 +27,17 @@
             <label for="image" class="form-label">image</label>
             <input type="text" class="form-control" id="image" name="image" value="{{$post->image}}" required>
         </div>
+
+        <div class="form-group">
+            <label for="category_id" class="form-label">categoria</label>
+            <select class="form-control" name="category_id" id="category_id">
+                <option value="" disabled>Seleziona una categoria</option>
+                @foreach ($listaCategories as $cat)
+                    <option value="{{$cat->id}}" {{$cat->id == $post->category_id ? "selected" : ''}}>{{$cat->name}}</option>    
+                @endforeach
+            </select>
+        </div>
+
         <button type="submit" class="btn btn-primary">Modifica</button>
     </form>
 @endsection

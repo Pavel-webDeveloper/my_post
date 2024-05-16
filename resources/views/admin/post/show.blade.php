@@ -13,10 +13,16 @@
 @section('content')
     <div class="container d-flex align-items-center flex-column">
       <h1 class="my-4" style="font-style: italic;">{{$post->title}}</h1>
-        <div class="card" style="width: 80%;">
-            <img src="{{$post->image}}" class="card-img-top" alt="...">
+        <div class="card align-items-center" style="width: 80%; padding-top: 25px;">
+            <img src="{{$post->image}}" class="card-img-top" alt="..." style="{{$post->category_id == "7" ? 'width: 150px' : ''}}">
             <div class="card-body">
-              <h5 class="card-title">Categoria: </h5>
+              <h5 class="card-title">Categoria: 
+                @if($post->category_id != null) 
+                  {{$categoryPost->name}}
+                @else
+                  Nessuna
+                @endif 
+              </h5>
               <p class="card-text">{{ $post->description }}</p>
               <div class="action-botton d-flex justify-content-between align-items-baseline">
                 <a href="{{route('admin.posts.edit', $post->id)}}" class="btn btn-primary">Modifica</a>

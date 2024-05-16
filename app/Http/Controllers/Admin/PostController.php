@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Post;
+use App\Category;
 
 class PostController extends Controller
 {
@@ -36,7 +37,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view(('admin.post.create'));
+        $listaCategories = Category::all();
+        return view('admin.post.create', compact('listaCategories'));
     }
 
     /**
@@ -49,7 +51,8 @@ class PostController extends Controller
     {
         $request->validate($this->validateData);
         $data = $request->all();
-        
+        // @dd($data);
+
         $newPost = new Post();
         $newPost->title = $data['title'];
         $newPost->description = $data['description'];
@@ -59,7 +62,11 @@ class PostController extends Controller
         // @var_dump($slug);
         $newPost->slug = $slug;
 
+        if( isset($data['category_id'])){
+            $newPost->category_id = $data['category_id'];
+        }
         // @dd($newPost);
+
         $newPost->save();
         return redirect()->route('admin.posts.show', $newPost->id);
     }
@@ -72,7 +79,14 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('admin.post.show', compact('post'));
+        if($post->category_id){
+            $categoryPost = Category::findOrFail($post->category_id);
+        }else{
+            $categoryPost = null;
+        }
+        
+        // @dd($categoryPost);
+        return view('admin.post.show', compact(['post', 'categoryPost']));
     }
 
     /**
@@ -83,7 +97,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.post.edit', compact('post'));
+        $listaCategories = Category::all();
+        return view('admin.post.edit', compact(['post', 'listaCategories']));
     }
 
     /**
@@ -118,7 +133,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.posts.index')->with("messaggio", "{$post->name} è stato eliminato con successo!");
     }
 
     public function getSlug($titolo){
