@@ -40,6 +40,9 @@
                         <li>
                             <a href="{{route('admin.posts.index')}}">Post</a>
                         </li>
+                        <li>
+                            <a href="{{route('admin.categories.index')}}">Categories</a>
+                        </li>
                         @yield('link-extra-end')
                     </ul>
 

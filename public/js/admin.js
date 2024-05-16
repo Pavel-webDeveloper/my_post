@@ -37116,7 +37116,11 @@ window.myGlobalObject = {
     console.log(item);
     this.currentForm = e.currentTarget.parentNode;
     console.log(this.currentForm);
-    $('#deleteModal-body').html("Sei sicuro di voler eliminare ".concat(item['title'], "?"));
+    if (item['title']) {
+      $('#deleteModal-body').html("Sei sicuro di voler eliminare ".concat(item['title'], "?"));
+    } else if (item['name']) {
+      $('#deleteModal-body').html("Sei sicuro di voler eliminare ".concat(item['name'], "?"));
+    }
     $('#deleteModal').modal('show');
   },
   // invio form

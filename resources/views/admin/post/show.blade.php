@@ -18,7 +18,7 @@
             <div class="card-body">
               <h5 class="card-title">Categoria: </h5>
               <p class="card-text">{{ $post->description }}</p>
-              <div class="action-botton d-flex justify-content-between">
+              <div class="action-botton d-flex justify-content-between align-items-baseline">
                 <a href="{{route('admin.posts.edit', $post->id)}}" class="btn btn-primary">Modifica</a>
 
                 {{-- form per cancellare elemento --}}

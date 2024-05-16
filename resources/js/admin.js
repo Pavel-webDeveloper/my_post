@@ -16,7 +16,12 @@ window.myGlobalObject = {
         this.currentForm = e.currentTarget.parentNode;
         console.log(this.currentForm);
 
-        $('#deleteModal-body').html(`Sei sicuro di voler eliminare ${item['title']}?`);
+        if(item['title']){
+            $('#deleteModal-body').html(`Sei sicuro di voler eliminare ${item['title']}?`);
+        }else if(item['name']){
+            $('#deleteModal-body').html(`Sei sicuro di voler eliminare ${item['name']}?`);
+        }
+
         $('#deleteModal').modal('show');
     },
     // invio form
