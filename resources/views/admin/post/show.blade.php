@@ -2,6 +2,8 @@
 
 @section('pageActive', 'Post')
 
+@include('admin/partials/modal')
+
 @section('link-extra-start')
     <li>
         <a href="/admin">Dashboard</a>
@@ -23,7 +25,7 @@
                 <form action="{{route('admin.posts.destroy', $post->id)}}" method="POST">
                   @csrf
                   @method('DELETE')
-                  <button type="submit" class="btn btn-danger">Elimina</button>
+                  <button type="submit" class="btn btn-danger" onclick="myGlobalObject.openModal(event, {{$post}})">Elimina</button>
                 </form>
               </div>
             </div>
