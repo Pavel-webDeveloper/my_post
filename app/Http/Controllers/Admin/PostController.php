@@ -14,6 +14,15 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    // REGOLE DI VALIDAZIONE
+    protected $validateData = [
+        "title" => "required| max:100",
+        "description" => "required",
+        "image" => "required",
+    ];
+
+
     public function index()
     {
         $listaPost = Post::all();
@@ -38,7 +47,21 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate($this->validateData);
+        $data = $request->all();
+        
+        $newPost = new Post();
+        $newPost->title = $data['title'];
+        $newPost->description = $data['description'];
+        $newPost->image = $data['image'];
+
+        $slug = $this->getSlug($data['title']);
+        // @var_dump($slug);
+        $newPost->slug = $slug;
+
+        // @dd($newPost);
+        $newPost->save();
+        return redirect()->route('admin.posts.show', $newPost->id);
     }
 
     /**
@@ -58,9 +81,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        return view('admin.post.edit');
+        return view('admin.post.edit', compact('post'));
     }
 
     /**
@@ -70,9 +93,20 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $request->validate($this->validateData);
+
+        $data = $request->all();
+
+        if($data['title'] != $post['title']){
+            $slug = $this->getSlug($data['title']);
+            $post['slug'] = $slug;
+            // @dd($post['slug']);
+        }
+
+        $post->update($data);
+        return redirect()->route('admin.posts.show', $post->id);
     }
 
     /**
@@ -81,9 +115,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('admin.posts.index');
     }
 
     public function getSlug($titolo){

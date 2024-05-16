@@ -1,8 +1,20 @@
 @extends('layouts.admin')
 
-@section('content')
-    <h1>Sono index</h1>
+@section('pageActive', 'Post')
 
+@section('link-extra-start')
+    <li>
+        <a href="/admin">Dashboard</a>
+    </li>
+@endsection
+
+@section('link-extra-end')
+    <li>
+        <a href="{{route('admin.posts.create')}}">Nuovo Post+</a>
+    </li>
+@endsection
+
+@section('content')
     <ul>
         @foreach ($listaPost as $post)
             <li>

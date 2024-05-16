@@ -1,5 +1,30 @@
 @extends('layouts.admin')
 
+@section('pageActive', 'Post')
+
+@section('link-extra')
+    <li>
+        <a href="/admin">Dashboard</a>
+    </li>
+@endsection
+
 @section('content')
-    <h1>Sono create</h1>
+    <h1>Aggiungi un nuovo Post</h1>
+    <form action="{{route('admin.posts.store')}}" method="POST">
+        @csrf
+        <div class="form-group">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title" >
+        </div>
+
+        <div class="form-group">
+            <label for="title" class="form-label">description</label>
+            <textarea class="form-control" name="description" id="description" cols="30" rows="10"></textarea>        </div>
+
+        <div class="form-group">
+            <label for="image" class="form-label">image</label>
+            <input type="text" class="form-control" id="image" name="image" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Aggiungi</button>
+  </form>
 @endsection
