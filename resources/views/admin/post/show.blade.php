@@ -13,7 +13,7 @@
 @section('content')
     <div class="container d-flex align-items-center flex-column">
       <h1 class="my-4" style="font-style: italic;">{{$post->title}}</h1>
-        <div class="card align-items-center" style="width: 80%; padding-top: 25px;">
+        <div class="card align-items-center" style="width: 80%; {{$post->category_id == "7" ? 'padding-top: 25px' : ''}}">
             <img src="{{$post->image}}" class="card-img-top" alt="..." style="{{$post->category_id == "7" ? 'width: 150px' : ''}}">
             <div class="card-body">
               <h5 class="card-title">Categoria: 

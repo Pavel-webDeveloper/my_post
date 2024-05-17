@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Category;
+use App\Post;
 
 class CategoryController extends Controller
 {
@@ -69,7 +70,11 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('admin.category.show', compact('category'));
+        // per la categoria recupero tutti i post che hanno il category_id uguale all'id della categoria
+        $postWhithCategory = Post::where('category_id', '=', $category->id)->get();
+        // @dd($postWhithCategory);
+
+        return view('admin.category.show', compact(['category', 'postWhithCategory']));
     }
 
     /**
