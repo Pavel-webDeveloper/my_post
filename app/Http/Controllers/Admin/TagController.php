@@ -14,6 +14,13 @@ class TagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     // REGOLE DI VALIDAZIONE
+    protected $validateData = [
+        "name" => "required|unique:tags|max:80",
+    ];
+
+
     public function index()
     {
         $listaTag = Tag::all();
@@ -38,7 +45,24 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate($this->validateData);
+        $data = $request->all();
+        // @dd($data);
+
+        $newTag = new Tag();
+        $newTag->name = $data['name'];
+
+
+        $slug = Str::of($data['name'])->slug("-");
+        $count = 1;
+        while(Tag::where('slug', $slug)->first()){
+            $slug = Str::of($data['name'])->slug("-") . "-{$count}";
+            $count++;
+        }
+        $newTag->slug = $slug;
+
+        $newTag->save();
+        return redirect()->route('admin.tags.show', $newTag->id);
     }
 
     /**
@@ -60,7 +84,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        return view('admin.tag.show', compact('tag'));
+        return view('admin.tag.edit', compact('tag'));
     }
 
     /**
@@ -70,9 +94,23 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Tag $tag)
     {
-        //
+        $request->validate($this->validateData);
+        $data =$request->all();
+
+        if($tag->name != $data["name"]){
+            $tag->name = $data["name"];
+            $slug = Str::of($tag->name)->slug("-");
+            $count = 1;
+            while(Tag::where('slug', $slug)->first()){
+                $slug = Str::of($tag->name)->slug("-") . "-{$count}";
+                $count++;
+            }
+            $tag->slug = $slug;
+        }
+        $tag->update($data);
+        return redirect()->route('admin.tags.show', $tag->id);
     }
 
     /**
@@ -81,8 +119,9 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Tag $tag)
     {
-        //
+        $tag->delete();
+        return redirect()->route('admin.tags.index');
     }
 }

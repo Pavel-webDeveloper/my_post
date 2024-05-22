@@ -10,12 +10,12 @@
 
 @section('content')
     <h1>Tags</h1>
-    <form action="{{route('admin.tags.update', $category->id)}}" method="POST">
+    <form action="{{route('admin.tags.update', $tag->id)}}" method="POST">
         @csrf
         @method('PUT')
         <div class="form-group">
             <label for="name" class="form-label">name</label>
-            <input type="text" class="form-control" id="name" name="name" value="{{$category->name}}">
+            <input type="text" class="form-control" id="name" name="name" value="{{$tag->name}}">
         </div>
 
         <button type="submit" class="btn btn-primary">Modifica</button>
