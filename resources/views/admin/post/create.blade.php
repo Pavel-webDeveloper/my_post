@@ -36,6 +36,18 @@
             </select>
         </div>
 
+        <div class="form-group">
+            <h5>Tags</h5>
+            @foreach ($listaTag as $tag)
+                <div class="form-check-inline">
+                    <label for="{{$tag->id}}" style="margin: 1px;">{{$tag->name}}</label>
+                    <input type="checkbox" class="form-check-input" id="{{$tag->id}}" name="tags[]" value="{{$tag->id}}">
+                </div>
+            @endforeach
+        </div>
+
+
+
         <button type="submit" class="btn btn-primary">Aggiungi</button>
   </form>
 @endsection

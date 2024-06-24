@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Post;
 use App\Category;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -37,8 +38,10 @@ class PostController extends Controller
      */
     public function create()
     {
+        // prendo categorie e tag e li ritorno alla view
         $listaCategories = Category::all();
-        return view('admin.post.create', compact('listaCategories'));
+        $listaTag = Tag::all();
+        return view('admin.post.create', compact(['listaCategories', 'listaTag']));
     }
 
     /**
@@ -62,12 +65,20 @@ class PostController extends Controller
         // @var_dump($slug);
         $newPost->slug = $slug;
 
+        // se viene passato dall'utente la categoria la vado a settare
         if( isset($data['category_id'])){
             $newPost->category_id = $data['category_id'];
         }
         // @dd($newPost);
 
         $newPost->save();
+
+        // POPOLO LA TABELLA PIVOT DOPO IL SALVATAGGIO NEL DATABASE DEL POST
+        if( isset($data['tags'])){
+            $newPost->tags()->sync($data['tags']);
+        }
+
+
         return redirect()->route('admin.posts.show', $newPost->id);
     }
 
@@ -79,6 +90,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        // controllo se il post ha una categoria associata
         if($post->category_id){
             $categoryPost = Category::findOrFail($post->category_id);
         }else{
@@ -98,7 +110,13 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $listaCategories = Category::all();
-        return view('admin.post.edit', compact(['post', 'listaCategories']));
+        $listaTag = Tag::all();
+        $myTags = [];
+        foreach ($post->tags as $item) {
+            $myTags[] = $item->id;
+        }
+
+        return view('admin.post.edit', compact(['post', 'listaCategories', 'listaTag', 'myTags']));
     }
 
     /**
@@ -113,6 +131,7 @@ class PostController extends Controller
         $request->validate($this->validateData);
 
         $data = $request->all();
+        // @dd($data);
 
         if($data['title'] != $post['title']){
             $slug = $this->getSlug($data['title']);
@@ -121,6 +140,11 @@ class PostController extends Controller
         }
 
         $post->update($data);
+
+        if(isset($data['tags'])) {
+            $post->tags()->sync($data['tags']);
+        }
+
         return redirect()->route('admin.posts.show', $post->id);
     }
 

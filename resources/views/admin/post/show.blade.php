@@ -16,14 +16,24 @@
         <div class="card align-items-center" style="width: 80%; {{$post->category_id == "7" ? 'padding-top: 25px' : ''}}">
             <img src="{{$post->image}}" class="card-img-top" alt="..." style="{{$post->category_id == "7" ? 'width: 150px' : ''}}">
             <div class="card-body">
-              <h5 class="card-title">Categoria: 
+              <h4 class="card-title">Categoria: 
                 @if($post->category_id != null) 
-                  {{$categoryPost->name}}
+                <a href="{{route('admin.categories.show', $categoryPost->id)}}">{{$categoryPost->name}}</a>
                 @else
                   Nessuna
                 @endif 
-              </h5>
+              </h4>
               <p class="card-text">{{ $post->description }}</p>
+
+              @if (count($post->tags) > 0)
+              <h5>Preparazione:</h5>
+                <ul>
+                  @foreach ($post->tags as $item)
+                    <li><a href="{{route('admin.tags.show', $item->id)}}">{{$item->name}}</a></li>  
+                  @endforeach
+                </ul>
+              @endif
+
               <div class="action-botton d-flex justify-content-between align-items-baseline">
                 <a href="{{route('admin.posts.edit', $post->id)}}" class="btn btn-primary">Modifica</a>
 

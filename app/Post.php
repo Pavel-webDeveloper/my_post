@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Post extends Model
 {
-    protected $guarded = [];
+    protected $guarded = ['tags'];
 
     public function category(){
         return $this->belongsTo('App\Category');

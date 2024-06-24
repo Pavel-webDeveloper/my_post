@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-<h1>Aggiungi un nuovo Post</h1>
+<h1>Modifica Post</h1>
     <form action="{{route('admin.posts.update', $post->id)}}" method="POST">
         @csrf
         @method('PUT')
@@ -36,6 +36,18 @@
                     <option value="{{$cat->id}}" {{$cat->id == $post->category_id ? "selected" : ''}}>{{$cat->name}}</option>    
                 @endforeach
             </select>
+        </div>
+
+        <div class="form-group">
+            <h5>Tags</h5>
+            @foreach ($listaTag as $tag)
+                <div class="form-check-inline">
+                    <label for="{{$tag->id}}" style="margin: 1px;">{{$tag->name}}</label>
+                    <input type="checkbox" class="form-check-input" id="{{$tag->id}}" name="tags[]" value="{{$tag->id}}"
+                    {{in_array($tag->id, $myTags) ? 'checked' : ''}}
+                    >
+                </div>
+            @endforeach
         </div>
 
         <button type="submit" class="btn btn-primary">Modifica</button>
