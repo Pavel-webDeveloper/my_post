@@ -17,3 +17,9 @@ const mix = require('laravel-mix');
      processCssUrls: false,
  });
 
+//  front-office
+ mix.js('resources/js/front.js', 'public/js')
+ .sass('resources/sass/front.scss', 'public/css').options({
+     processCssUrls: false,
+ });
+
