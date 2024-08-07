@@ -9,7 +9,6 @@
 </head>
 <body>
     <h2>Work in progress</h2>
-    <a href="/admin">Area riservata</a>
 
     {{-- applicazione Vue --}}
     <div id="root"></div>

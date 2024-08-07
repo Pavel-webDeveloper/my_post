@@ -1,16 +1,24 @@
 <template>
     <div>
-        <h1>Benvenuto nella pagina Principale</h1>
-        <h2> grande zio ce sei riuscito</h2>
+        <header-component />
+        <main-component />
+        <footer-component />
     </div>
 </template>
 
 
 <script>
+import HeaderComponent from '../components/HeaderComponent.vue';
+import MainComponent from '../components/MainComponent.vue';
+import FooterComponent from '../components/FooterComponent.vue';
+
 
 export default {
     name: "App",
     components: {
+        HeaderComponent,
+        MainComponent,
+        FooterComponent
 
     }
 }
