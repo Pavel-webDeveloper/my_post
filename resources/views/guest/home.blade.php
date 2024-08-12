@@ -8,7 +8,6 @@
     <title>my Post</title>
 </head>
 <body>
-    <h2>Work in progress</h2>
 
     {{-- applicazione Vue --}}
     <div id="root"></div>
