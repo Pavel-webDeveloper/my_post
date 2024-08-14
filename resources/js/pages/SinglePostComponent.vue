@@ -17,6 +17,9 @@
             </div>
         </div>
     </div>
+    <div v-else>
+        <h1></h1>
+    </div>
 </template>
 
 <script>
@@ -46,6 +49,8 @@ export default {
         axios.get(`/api/posts/${itemSlug}`).then((res)=>{
             this.itemPost = res.data;
             console.log(this.itemPost);
+        }).catch((error)=>{
+            this.$router.push({name: 'page-404'});
         })
     }
 }
