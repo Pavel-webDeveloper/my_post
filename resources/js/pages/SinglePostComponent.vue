@@ -13,13 +13,38 @@
             </ul>
             <div class="card-body">
                 <a href="#" class="card-link">{{itemPost.category.name}}</a>
-                <a href="#" class="card-link">Another link</a>
+                <!-- <a href="#" class="card-link">Another link</a> -->
             </div>
         </div>
+
+        <!-- form Commenti -->
+        <div class="form-group mt-5">
+            <h3>Inserisci un commento</h3>
+            <form @submit.prevent="addComment()">
+                <label for="username">Inserisci il nome</label>
+                <input type="text" v-model="formData.username" class="form-control">
+
+                <label for="content">Inserisci il messaggio</label>
+                <input type="text" v-model="formData.content" class="form-control">
+
+                <button type="submit" class="mt-3 btn btn-primary">Invia</button>
+            </form>
+        </div>
+
+
+        <!-- Vista Commenti -->
+        <div v-if="itemPost.comments.length > 0">
+            <h3 class="mt-5">Commenti</h3>
+            <ul>
+                <li v-for="comment in itemPost.comments" :key="comment.id">{{comment.username}}
+                    <ul>
+                        <li style="list-style-type: none;">{{comment.content}}</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div v-else>
-        <h1></h1>
-    </div>
+
 </template>
 
 <script>
@@ -29,17 +54,28 @@ export default {
         return {
             itemPost: null,
             descLim: true,
+            formData: {
+                "username": "",
+                "content": "",
+                "post_id": "",
+            }
         }
     },
     methods: {
         descriptToogle(lim){
             if(lim == true){
                 this.descLim = false;
-                console.log('falso');
+                // console.log('falso');
             }else {
                 this.descLim = true;
-                console.log('vero');
+                // console.log('vero');
             }
+        },
+        addComment(){
+            axios.post('/api/comments', this.formData).then((res)=>{
+                // console.log(res.data);
+                this.itemPost.comments.push(res.data);
+            })
         }
     },
     mounted(){
@@ -48,7 +84,8 @@ export default {
 
         axios.get(`/api/posts/${itemSlug}`).then((res)=>{
             this.itemPost = res.data;
-            console.log(this.itemPost);
+            this.formData.post_id = this.itemPost.id;
+            // console.log(this.itemPost);
         }).catch((error)=>{
             this.$router.push({name: 'page-404'});
         })

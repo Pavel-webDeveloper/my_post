@@ -16,7 +16,7 @@ class PostController extends Controller
 
     public function show($slug){
 
-        $singlePost = Post::where('slug', $slug)->with(['category', 'tags'])->first();
+        $singlePost = Post::where('slug', $slug)->with(['category', 'tags', 'comments'])->first();
         if(empty($singlePost)){
             return response()->json(["message"=>"Page Not Found"], 404);
         }

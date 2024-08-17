@@ -2064,29 +2064,42 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       itemPost: null,
-      descLim: true
+      descLim: true,
+      formData: {
+        "username": "",
+        "content": "",
+        "post_id": ""
+      }
     };
   },
   methods: {
     descriptToogle: function descriptToogle(lim) {
       if (lim == true) {
         this.descLim = false;
-        console.log('falso');
+        // console.log('falso');
       } else {
         this.descLim = true;
-        console.log('vero');
+        // console.log('vero');
       }
+    },
+    addComment: function addComment() {
+      var _this = this;
+      axios.post('/api/comments', this.formData).then(function (res) {
+        // console.log(res.data);
+        _this.itemPost.comments.push(res.data);
+      });
     }
   },
   mounted: function mounted() {
-    var _this = this;
+    var _this2 = this;
     // console.log(this.$route.params);
     var itemSlug = this.$route.params.slug;
     axios.get("/api/posts/".concat(itemSlug)).then(function (res) {
-      _this.itemPost = res.data;
-      console.log(_this.itemPost);
+      _this2.itemPost = res.data;
+      _this2.formData.post_id = _this2.itemPost.id;
+      // console.log(this.itemPost);
     })["catch"](function (error) {
-      _this.$router.push({
+      _this2.$router.push({
         name: 'page-404'
       });
     });
@@ -2471,12 +2484,79 @@ var render = function render() {
     attrs: {
       href: "#"
     }
-  }, [_vm._v(_vm._s(_vm.itemPost.category.name))]), _vm._v(" "), _c("a", {
-    staticClass: "card-link",
-    attrs: {
-      href: "#"
+  }, [_vm._v(_vm._s(_vm.itemPost.category.name))])])]), _vm._v(" "), _c("div", {
+    staticClass: "form-group mt-5"
+  }, [_c("h3", [_vm._v("Inserisci un commento")]), _vm._v(" "), _c("form", {
+    on: {
+      submit: function submit($event) {
+        $event.preventDefault();
+        return _vm.addComment();
+      }
     }
-  }, [_vm._v("Another link")])])])]) : _c("div", [_c("h1")]);
+  }, [_c("label", {
+    attrs: {
+      "for": "username"
+    }
+  }, [_vm._v("Inserisci il nome")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.formData.username,
+      expression: "formData.username"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.formData.username
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.formData, "username", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": "content"
+    }
+  }, [_vm._v("Inserisci il messaggio")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.formData.content,
+      expression: "formData.content"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.formData.content
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.formData, "content", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("button", {
+    staticClass: "mt-3 btn btn-primary",
+    attrs: {
+      type: "submit"
+    }
+  }, [_vm._v("Invia")])])]), _vm._v(" "), _vm.itemPost.comments.length > 0 ? _c("div", [_c("h3", {
+    staticClass: "mt-5"
+  }, [_vm._v("Commenti")]), _vm._v(" "), _c("ul", _vm._l(_vm.itemPost.comments, function (comment) {
+    return _c("li", {
+      key: comment.id
+    }, [_vm._v(_vm._s(comment.username) + "\n                "), _c("ul", [_c("li", {
+      staticStyle: {
+        "list-style-type": "none"
+      }
+    }, [_vm._v(_vm._s(comment.content))])])]);
+  }), 0)]) : _vm._e()]) : _vm._e();
 };
 var staticRenderFns = [];
 render._withStripped = true;
